@@ -4,16 +4,12 @@ limit = big
 candidates = []
 not_prime = []
 
-for i in range(3, limit, 2):
-    if big%i == 0: candidates.append(i)
-for n in candidates:
-    for i in range(3, n, 2):
-        if n%i == 0:
-            not_prime.append(n)
-            break
-print("Candidates")
-for n in candidates:
-    prime = true
-    for i in not_prime:
-        if n == i: prime = false
-    if prime: print(n)
+def eratosthenes2(n):
+    multiples = set()
+    for i in range(2, n+1):
+        if i not in multiples:
+            print(i)
+            #candidates.append(i)
+            multiples.update(range(i*i, n+1, i))
+
+eratosthenes2(big)
