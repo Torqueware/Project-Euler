@@ -1,25 +1,20 @@
 #!/usr/bin/python3.3
 
+import math
+
 limit = 1000000
 longest_chain = 0
 longest_chain_length = 0
 
-def chain(sequence):
-    n = sequence[len(sequence) - 1]
-    if n == 1:
-        return sequence
-    elif n%2 == 0:
-        sequence.append(int(n / 2))
-        chain(sequence)
-    else:
-        sequence.append(3 * n + 1)
-        chain(sequence)
-
 def collatz(n):
-    new_chain = list()
-    new_chain.append(n)
+    length= 0
 
-    return(len(chain(new_chain)))
+    while n > 1:
+        if bool(n & 1): n = (3 * n) + 1
+        else: n = int(n/2)
+        length += 1
+
+    return length
 
 for i in range(1, limit):
     current_chain_length = collatz(i)
@@ -28,5 +23,5 @@ for i in range(1, limit):
         longest_chain = i
         longest_chain_length = current_chain_length
 
-print(longest_chain)
+print("final answer", longest_chain)
 
