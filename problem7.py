@@ -2,8 +2,9 @@
 
 import math
 
-big    = 600851475143
-limit =
+amt = 0
+limit = 1000000
+
 prime = list()
 prime = [False] * (limit + 1)
 
@@ -26,3 +27,9 @@ for n in range(5, int(math.sqrt(limit))):
     if prime[n]:
         for k in range(n**2, limit + 1, n**2):
             prime[k] = False
+
+for n in range(5, int(math.sqrt(limit))):
+    if prime[n]:
+        amt += 1
+
+print(amt)
